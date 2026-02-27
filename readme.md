@@ -5,4 +5,4 @@
 
 **Завдання:** Розробити статичні Web-сторінки додатку "Калькулятор (для програміста)" та перевірити коректне їх відображення на екранах різного розміру. Без програмування функціоналу.
 
-**Звіт на Google Drive:** https://docs.google.com/document/d/1UHzU0F1Tl-YGuGsNfy_cwpuSd0qWDOEj/edit?usp=sharing&ouid=105891287897266174939&rtpof=true&sd=true
+**Звіт на Google Drive:** https://docs.google.com/document/d/1105fg7n8LKfqUMuHLSdUD8wMWse29qSX/edit?usp=sharing&ouid=105891287897266174939&rtpof=true&sd=true

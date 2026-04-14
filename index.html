@@ -11,9 +11,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">🖩 DevCalc</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Калькулятор</a></li>
@@ -31,7 +29,10 @@
         <div class="calc-container">
             <div class="calc-display">0</div>
             <div class="hex-bin-panel">
-                HEX: 0<br>DEC: 0<br>OCT: 0<br>BIN: 0
+                <div class="base-item" data-b="16">HEX: 0</div>
+                <div class="base-item base-active" data-b="10">DEC: 0</div>
+                <div class="base-item" data-b="8">OCT: 0</div>
+                <div class="base-item" data-b="2">BIN: 0</div>
             </div>
             <div class="row g-2">
                 <div class="col-3"><button class="btn btn-secondary calc-btn">A</button></div>
@@ -47,28 +48,37 @@
                 <div class="col-3"><button class="btn btn-light calc-btn">7</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">8</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">9</button></div>
-                <div class="col-3"><button class="btn btn-info calc-btn">AND</button></div>
+                <div class="col-3"><button class="btn btn-info calc-btn">/</button></div>
                 
                 <div class="col-3"><button class="btn btn-light calc-btn">4</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">5</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">6</button></div>
-                <div class="col-3"><button class="btn btn-info calc-btn">OR</button></div>
+                <div class="col-3"><button class="btn btn-info calc-btn">*</button></div>
                 
                 <div class="col-3"><button class="btn btn-light calc-btn">1</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">2</button></div>
                 <div class="col-3"><button class="btn btn-light calc-btn">3</button></div>
-                <div class="col-3"><button class="btn btn-info calc-btn">XOR</button></div>
+                <div class="col-3"><button class="btn btn-info calc-btn">-</button></div>
 
-                <div class="col-6"><button class="btn btn-light calc-btn">0</button></div>
+                <div class="col-3"><button class="btn btn-light calc-btn">0</button></div>
                 <div class="col-3"><button class="btn btn-primary calc-btn">=</button></div>
+                <div class="col-3"><button class="btn btn-success calc-btn">+</button></div>
+                <div class="col-3"><button class="btn btn-info calc-btn">AND</button></div>
+
+                <div class="col-3"><button class="btn btn-info calc-btn">OR</button></div>
+                <div class="col-3"><button class="btn btn-info calc-btn">XOR</button></div>
                 <div class="col-3"><button class="btn btn-info calc-btn">NOT</button></div>
             </div>
         </div>
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container"><p class="mb-0">© 2026 DevCalc. Лабораторна №1.</p></div>
+        <div class="container"><p class="mb-0">© 2026 DevCalc. Лабораторна №2.</p></div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="auth.js"></script>
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
 </body>
 </html>

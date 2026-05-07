@@ -14,6 +14,7 @@ function initAuth() {
         }
     });
 
+    // Кнопка "Вийти"
     if (isLoggedIn && navbar) {
         const logoutLi = document.createElement('li');
         logoutLi.className = 'nav-item';
@@ -22,7 +23,9 @@ function initAuth() {
 
         document.getElementById('logoutBtn').onclick = (e) => {
             e.preventDefault();
+            // Стираємо статус входу та інформацію про поточного користувача
             localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUserEmail');
             window.location.href = 'login.html';
         };
     }
@@ -39,7 +42,21 @@ function initAuth() {
                 gender: document.getElementById('regGender').value,
                 dob: document.getElementById('regDate').value
             };
-            localStorage.setItem('devcalc_user', JSON.stringify(userData));
+            
+           
+            let users = JSON.parse(localStorage.getItem('devcalc_users')) || [];
+            
+
+            if (users.some(u => u.email === userData.email)) {
+                alert('Користувач з таким email вже існує!');
+                return; 
+            }
+
+
+            users.push(userData);
+
+            localStorage.setItem('devcalc_users', JSON.stringify(users));
+            
             alert('Реєстрація успішна! Тепер увійдіть.');
             window.location.href = 'login.html';
         };
@@ -52,10 +69,16 @@ function initAuth() {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const pass = document.getElementById('loginPass').value;
-            const savedUser = JSON.parse(localStorage.getItem('devcalc_user'));
+            
 
-            if (savedUser && savedUser.email === email && savedUser.pass === pass) {
+            const users = JSON.parse(localStorage.getItem('devcalc_users')) || [];
+
+
+            const foundUser = users.find(u => u.email === email && u.pass === pass);
+
+            if (foundUser) {
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUserEmail', foundUser.email);
                 window.location.href = 'profile.html';
             } else {
                 alert('Невірний email або пароль!');
@@ -70,14 +93,21 @@ function initAuth() {
             window.location.href = 'login.html';
             return;
         }
-        const savedUser = JSON.parse(localStorage.getItem('devcalc_user'));
-        if (savedUser) {
+        
+        // Зчитуємо email поточного юзера та повний масив юзерів
+        const currentEmail = localStorage.getItem('currentUserEmail');
+        const users = JSON.parse(localStorage.getItem('devcalc_users')) || [];
+        
+
+        const activeUser = users.find(u => u.email === currentEmail);
+        
+        if (activeUser) {
             const cells = document.querySelectorAll('table tbody tr td:nth-child(2)');
             if (cells.length >= 4) {
-                cells[0].innerText = savedUser.name;
-                cells[1].innerText = savedUser.email;
-                cells[2].innerText = savedUser.gender;
-                cells[3].innerText = savedUser.dob;
+                cells[0].innerText = activeUser.name;
+                cells[1].innerText = activeUser.email;
+                cells[2].innerText = activeUser.gender;
+                cells[3].innerText = activeUser.dob;
             }
         }
     }
